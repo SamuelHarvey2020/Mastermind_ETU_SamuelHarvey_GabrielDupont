@@ -25,6 +25,7 @@
     <ClInclude Include="ListeBase.h">
       <Filter>Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="Noeud.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Interfaces">
