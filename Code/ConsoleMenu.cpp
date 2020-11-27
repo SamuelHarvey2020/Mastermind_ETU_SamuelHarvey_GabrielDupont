@@ -4,6 +4,7 @@
 #include "ListeDouble.h"
 
 #include <iostream>
+#include <time.h>
 
 ConsoleMenu::ConsoleMenu()
 {

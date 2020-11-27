@@ -2,6 +2,7 @@
 #include "ListeBase.h"
 #include "EmptyListException.h"
 #include "Iterateur.h"
+#include "Noeud.h"
 
 
 using namespace std;
@@ -20,17 +21,18 @@ public :
 	bool ajouter(T* element);
 	void retirer(Noeud <T>* noeudCourant);
 
-	const int getNbElements();
+	int getNbElements() const;
 	Noeud<T>* getPremierNoeud();
-	const bool isEmpty();
+	bool isEmpty() const;
 
 	typedef Iterateur<T> iterateur;
 	Iterateur<T> begin();
 	Iterateur<T> end();
 
 private:
-	Noeud* premierNoeud;
+	Noeud<T>* premierNoeud;
 	void retirer();
+	int nbElements;
 };
 
 //TODO : Implémentez votre liste double (toutes les méthodes de la classe mère)
@@ -48,91 +50,102 @@ ListeDouble<T>::~ListeDouble()
 template <class T>
 void ListeDouble<T>::vider()
 {
+	//apelle retirer jusqu att 1er null
 }
 
 template<class T>
-inline bool ListeDouble<T>::ajouter(T* element)
+bool ListeDouble<T>::ajouter(T* element)
 {
-	Noeud<T>* nouveauNoeud = new Noeud;
+	Noeud<T>* nouveauNoeud = new Noeud<T>();
 	nouveauNoeud->setElement(element);
 	bool canBeAdded = true;
 
 	if (this->premierNoeud == NULL) {
 		this->premierNoeud = nouveauNoeud;
 		this->premierNoeud->setSuivant(NULL);
+		this->premierNoeud->setPrecedent(NULL);
 	}
 	else {
 
 		if (*element < *(premierNoeud->getElement())) {
+			this->premierNoeud->setPrecedent(nouveauNoeud);
 			nouveauNoeud->setSuivant(premierNoeud);
 			this->premierNoeud = nouveauNoeud;
 		}
 		else {
 
-			Noeud<T>* noeudTemporaire = this->premierNoeud;
-			//Iterateur<T> iter(noeudTemporaire);
+			iterateur iter = this->begin();
 			bool solved = false;
 
-			if (*element != *(noeudTemporaire->getElement())) {
+			while (solved != true) {
 
-				while (solved != true) {
+				if (*element == *(iter.getCourant()->getElement())) {
+					canBeAdded = false;
+					break;
+				}
+				else if (*element < *(iter.getCourant()->getElement())) {
 
-					if (noeudTemporaire->getSuivant() == NULL) {
-						noeudTemporaire->setSuivant(nouveauNoeud);
-						noeudTemporaire->getSuivant()->setSuivant(NULL);
-						solved = true;
-					}
-					else if (*element == *(noeudTemporaire->getSuivant()->getElement())) {
+					iter.getCourant()->getPrecedent()->setSuivant(nouveauNoeud);
+					nouveauNoeud->setPrecedent(iter.getCourant()->getPrecedent());
+					nouveauNoeud->setSuivant(iter.getCourant());
+					iter.getCourant()->setPrecedent(nouveauNoeud);
+					
+					solved = true;
+				}
+				else if (iter.getCourant()->getSuivant() == NULL) {
 
-						canBeAdded = false;
-						break;
-					}
-					else if (*element < *(noeudTemporaire->getSuivant()->getElement())) {
-
-						nouveauNoeud->setSuivant(noeudTemporaire->getSuivant());
-						noeudTemporaire->setSuivant(nouveauNoeud);
-						solved = true;
-					}
-					else {
-						iterateur++;
-					}
+					nouveauNoeud->setPrecedent(iter.getCourant());
+					iter.getCourant()->setSuivant(nouveauNoeud);
+					iter.getCourant()->getSuivant()->setSuivant(NULL);
+					solved = true;
+				}
+				else {
+					++iter;
 				}
 			}
-			else {
-				canBeAdded = false;
-			}
-
 		}
-
 	}
 	return canBeAdded;
 }
 
 template<class T>
-inline void ListeDouble<T>::retirer(Noeud <T>* noeudCourant)
+void ListeDouble<T>::retirer(Noeud <T>* noeudCourant)
 {
-	Noeud<T>* noeudTemporaire = noeudCourant;
-	noeudTemporaire->getPrecedent()->setSuivant(noeudTemporaire->getSuivant());
-	noeudTemporaire->getSuivant()->setPrecedent(noeudTemporaire->getPrecedent());
-	delete noeudTemporaire;
+
+	//doit supprimer dernier noeud
+
+	if (this->premierNoeud != NULL) {
+
+		Noeud<T>* noeudTemporaire = noeudCourant;
+
+		if (noeudTemporaire != premierNoeud) {
+			noeudTemporaire->getPrecedent()->setSuivant(noeudTemporaire->getSuivant());
+			noeudTemporaire->getSuivant()->setPrecedent(noeudTemporaire->getPrecedent());
+		}
+		else {
+			this->premierNoeud = noeudTemporaire->getSuivant();
+			noeudTemporaire->getSuivant()->setPrecedent(NULL);
+		}
+		delete noeudTemporaire;
+	}
 }
 
 template<class T>
-inline const int ListeDouble<T>::getNbElements()
+int ListeDouble<T>::getNbElements() const
 {
-	return 0;
+	return this->nbElements;
 }
 
 template<class T>
-inline Noeud<T>* ListeDouble<T>::getPremierNoeud()
+Noeud<T>* ListeDouble<T>::getPremierNoeud()
 {
 	return this->premierNoeud;
 }
 
 template<class T>
-inline const bool ListeDouble<T>::isEmpty()
+bool ListeDouble<T>::isEmpty() const
 {
-	if (this->premierNoeud == NULL;) {
+	if(this->premierNoeud == NULL) {
 		return true;
 	}
 	else {
@@ -141,18 +154,20 @@ inline const bool ListeDouble<T>::isEmpty()
 }
 
 template<class T>
-inline Iterateur<T> ListeDouble<T>::begin()
+Iterateur<T> ListeDouble<T>::begin()
 {
 	return Iterateur<T>(premierNoeud);
 }
 
 template<class T>
-inline Iterateur<T> ListeDouble<T>::end()
+Iterateur<T> ListeDouble<T>::end()
 {
 	return Iterateur<T>(NULL);
 }
 
 template<class T>
-inline void ListeDouble<T>::retirer()
+void ListeDouble<T>::retirer()
 {
+	//retire le premier noeud
+	this->retirer(this->premierNoeud);
 }
