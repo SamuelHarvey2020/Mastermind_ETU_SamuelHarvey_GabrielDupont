@@ -33,7 +33,6 @@ Mastermind::Mastermind(ListeDouble<Combinaison>* _liste)
 		}
 
 	}
-
 	//on assigne la valeur a ce nouvel élément (combinaison)
 	//on ajoute la nouvelle combinaison en fin de liste
 
