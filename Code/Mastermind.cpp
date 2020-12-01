@@ -3,7 +3,37 @@
 
 Mastermind::Mastermind(ListeDouble<Combinaison>* _liste)
 {
-   //Il faut créer ici les 4096 combinaisons de couleurs possibles. Bonne réflexion!
+   //Il faut crï¿½er ici les 4096 combinaisons de couleurs possibles. Bonne rï¿½flexion!
+	//on cree un nouvel ï¿½lï¿½ment
+	for (int i = 1; i < 9; i++)
+	{
+		for (int j = 1; j < 9; j++)
+		{
+			for (int k = 1; k < 9; k++)
+			{
+				for (int l = 1; l < 9; l++)
+				{
+					short c1 = i;
+					Couleur* couleur1 = new Couleur(c1);
+
+					short c2 = j;
+					Couleur* couleur2 = new Couleur(c2);
+
+					short c3 = k;
+					Couleur* couleur3 = new Couleur(c3);
+
+					short c4 = l;
+					Couleur* couleur4 = new Couleur(c4);
+
+					Combinaison* combinaison = new Combinaison(*couleur1, *couleur2, *couleur3, *couleur4);
+				}
+			}
+		}
+	}
+	//on assigne la valeur a ce nouvel ï¿½lï¿½ment (combinaison)
+	//on ajoute la nouvelle combinaison en fin de liste
+
+
 }
 
 Mastermind::~Mastermind()
@@ -18,10 +48,10 @@ int Mastermind::getNbElements() const
 }
 
 /// <summary>
-/// Retourne un élément de la liste en position index
+/// Retourne un ï¿½lï¿½ment de la liste en position index
 /// </summary>
-/// <param name="index">La position de l'élément à retourner</param>
-/// <returns>L'élément qui est à la position index</returns>
+/// <param name="index">La position de l'ï¿½lï¿½ment ï¿½ retourner</param>
+/// <returns>L'ï¿½lï¿½ment qui est ï¿½ la position index</returns>
 Combinaison* Mastermind::getElement(int index) const
 {
 	return nullptr;
@@ -35,20 +65,20 @@ bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref,
 		int verdict = _tabVerdicts[i];
 	}
 	//A COMPLETER
-	//Vérifiez si la combinaison toValidate doit être retirée ou non de la liste, en fonction d'une combinaison de référence et d'un tableau de 4 verdicts.
-	//Pour chacune des couleurs présentes dans toValidate, 3 verdicts possibles doivent être pris en considération pour éléminer ou non la combinaison, 
+	//Vï¿½rifiez si la combinaison toValidate doit ï¿½tre retirï¿½e ou non de la liste, en fonction d'une combinaison de rï¿½fï¿½rence et d'un tableau de 4 verdicts.
+	//Pour chacune des couleurs prï¿½sentes dans toValidate, 3 verdicts possibles doivent ï¿½tre pris en considï¿½ration pour ï¿½lï¿½miner ou non la combinaison,
 	//il s'agit de "Bonne couleur, bonne place" (valeur 1), "Bonne couleur, mauvaise place" (valeur 2) et "Mauvaise couleur" (valeur 3).
 
-	//Voici un ébauche d'algorithme qui devrait vous aider à compléter cette méthode:
-	//Pour chacune des couleurs de la combinaison toValidate, vérifiez:
-	
-	//Si le verdict est 1 (Bonne couleur, bonne place) et que la combinaison de couleurs à valider n'a pas la couleur à la même place que 
-	//la combinaison de référence, il faut la retirer de la liste.
+	//Voici un ï¿½bauche d'algorithme qui devrait vous aider ï¿½ complï¿½ter cette mï¿½thode:
+	//Pour chacune des couleurs de la combinaison toValidate, vï¿½rifiez:
 
-	//Si le verdict est 2 (Bonne couleur, mauvaise place) et que la combinaison de couleurs à valider n'a pas la couleur à un autre emplacement que
-	//celui de la combinaison de référence, il faut la retirer de la liste.
+	//Si le verdict est 1 (Bonne couleur, bonne place) et que la combinaison de couleurs ï¿½ valider n'a pas la couleur ï¿½ la mï¿½me place que
+	//la combinaison de rï¿½fï¿½rence, il faut la retirer de la liste.
 
-	//Si le verdict est 3 (Mauvaise couleur) et que la combinaison de couleurs à valider a la couleur, il faut la retirer de la liste.
+	//Si le verdict est 2 (Bonne couleur, mauvaise place) et que la combinaison de couleurs ï¿½ valider n'a pas la couleur ï¿½ un autre emplacement que
+	//celui de la combinaison de rï¿½fï¿½rence, il faut la retirer de la liste.
+
+	//Si le verdict est 3 (Mauvaise couleur) et que la combinaison de couleurs ï¿½ valider a la couleur, il faut la retirer de la liste.
 
 	//Retournez true si la combinaison est valide (respecte les verdicts) et false dans le cas contraire.
 
@@ -56,11 +86,11 @@ bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref,
 	//recoit combinaison a valider, combinaison ref, tabreference
 	//tovalidate vient de la liste - change chaque fois
 	//autres param changent pas
-	//ref - ordinateur a essayé de deviner
+	//ref - ordinateur a essayï¿½ de deviner
 	//tabverdict - verdict de la demande ref
-	//3-3-3-3 -> retire tout les combinaisons dont les couleurs envoyés par ref sont présentes
-	//1-3-3-3 -> mauve bleu orange orange > entré -> mauve blanc noir noir > ref -> garde tout les combinaisons dont le 1 est a la bonne place
-	//2 -> bonne couleur mais pas a la bonne place-> garde toutes les combinaisons dont la couleur de verdict 2 est présente, flush tout celles ou la couleur de verdict 2 est a la meme place et ceux qui ont pas la couleur
+	//3-3-3-3 -> retire tout les combinaisons dont les couleurs envoyï¿½s par ref sont prï¿½sentes
+	//1-3-3-3 -> mauve bleu orange orange > entrï¿½ -> mauve blanc noir noir > ref -> garde tout les combinaisons dont le 1 est a la bonne place
+	//2 -> bonne couleur mais pas a la bonne place-> garde toutes les combinaisons dont la couleur de verdict 2 est prï¿½sente, flush tout celles ou la couleur de verdict 2 est a la meme place et ceux qui ont pas la couleur
 
 	return 0;
 }
@@ -91,9 +121,9 @@ short Mastermind::nettoyerListe(Combinaison* _ref, short* _tabVerdicts)
 
 
 	//A COMPLETER
-	//Épure la liste de combinaisons de couleurs en fonction de la combinaison reçue et des 4 verdicts (valeurs 1 à 3).
-	//Pour chacune des combinaisons de la liste, vérifier si elle doit être retirée ou non de liste.
-	//Le nombre de combinaisons supprimées doit être retourné.
+	//ï¿½pure la liste de combinaisons de couleurs en fonction de la combinaison reï¿½ue et des 4 verdicts (valeurs 1 ï¿½ 3).
+	//Pour chacune des combinaisons de la liste, vï¿½rifier si elle doit ï¿½tre retirï¿½e ou non de liste.
+	//Le nombre de combinaisons supprimï¿½es doit ï¿½tre retournï¿½.
 
 	return 0;
 }
