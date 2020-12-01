@@ -4,6 +4,38 @@
 Mastermind::Mastermind(ListeDouble<Combinaison>* _liste)
 {
    //Il faut créer ici les 4096 combinaisons de couleurs possibles. Bonne réflexion!
+	//on cree un nouvel élément
+	for (int i = 1; i < 9; i++) 
+	{
+		for (int j = 1; j < 9; j++)
+		{
+			for (int k = 1; k < 9; k++)
+			{
+				for (int l = 1; l < 9; l++)
+				{
+					short c1 = i;
+					Couleur* couleur1 = new Couleur(c1);
+
+					short c2 = j;
+					Couleur* couleur2 = new Couleur(c2);
+
+					short c3 = k;
+					Couleur* couleur3 = new Couleur(c3);
+
+					short c4 = l;
+					Couleur* couleur4 = new Couleur(c4);
+
+					Combinaison* combinaison = new Combinaison(*couleur1, *couleur2, *couleur3, *couleur4);
+				}
+
+			}
+
+		}
+
+	}
+	//on assigne la valeur a ce nouvel élément (combinaison)
+	//on ajoute la nouvelle combinaison en fin de liste
+
 	
 }
 
