@@ -8,8 +8,6 @@
 
 ConsoleMenu::ConsoleMenu()
 {
-	//this is a test
-	//this is a test
 }
 
 
@@ -79,6 +77,7 @@ void ConsoleMenu::run()
                 if (partieEstTerminee(tabVerdicts))
                 {
                     afficherResultat(nbCoups);
+					break;
                 }
                 else
                 {

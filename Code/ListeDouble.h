@@ -32,7 +32,7 @@ public :
 private:
 	Noeud<T>* premierNoeud;
 	void retirer();
-	int nbElements;
+	int nbElements = 0;
 };
 
 //TODO : Implémentez votre liste double (toutes les méthodes de la classe mère)
@@ -104,6 +104,9 @@ bool ListeDouble<T>::ajouter(T* element)
 				}
 			}
 		}
+	}
+	if (canBeAdded == true) {
+		this.nbElements++;
 	}
 	return canBeAdded;
 }

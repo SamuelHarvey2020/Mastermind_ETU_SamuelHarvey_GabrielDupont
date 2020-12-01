@@ -1,7 +1,5 @@
 #include "Combinaison.h"
 
-//test de push2
-
 Combinaison::Combinaison(Couleur c1, Couleur c2, Couleur c3, Couleur c4)
 {
 	tabCouleurs[0] = c1;
