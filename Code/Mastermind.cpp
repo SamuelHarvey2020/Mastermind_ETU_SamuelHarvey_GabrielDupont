@@ -27,12 +27,8 @@ Mastermind::Mastermind(ListeDouble<Combinaison>* _liste)
 
 					Combinaison* combinaison = new Combinaison(*couleur1, *couleur2, *couleur3, *couleur4);
 				}
-
 			}
-
 		}
-
-
 	}
 	//on assigne la valeur a ce nouvel élément (combinaison)
 	//on ajoute la nouvelle combinaison en fin de liste
