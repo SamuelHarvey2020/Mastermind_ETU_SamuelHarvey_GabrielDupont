@@ -61,10 +61,14 @@ Combinaison* Mastermind::getElement(int index) const
 
 bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref, short* _tabVerdicts)
 {
-	//tab verdict codee deja
-	//
+	
 	for (int i = 0; i < 4; i++) {
+
+
+		Couleur couleur = _ref->getCouleur(i);
 		int verdict = _tabVerdicts[i];
+		Couleur couleurAValider = _toValidate->getCouleur(i);
+		//a completer ici
 	}
 	//A COMPLETER
 	//V�rifiez si la combinaison toValidate doit �tre retir�e ou non de la liste, en fonction d'une combinaison de r�f�rence et d'un tableau de 4 verdicts.
