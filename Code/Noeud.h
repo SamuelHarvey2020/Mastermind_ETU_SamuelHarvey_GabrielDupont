@@ -21,6 +21,7 @@ private:
 template<class T>
 Noeud<T>::Noeud()
 {
+
 }
 
 template<class T>
