@@ -61,16 +61,28 @@ Combinaison* Mastermind::getElement(int index) const
 
 bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref, short* _tabVerdicts)
 {
-	
-	for (int i = 0; i < 4; i++) {
-
-
-		Couleur couleur = _ref->getCouleur(i);
-		int verdict = _tabVerdicts[i];
+	for (int i = 0; i < 4; i++)
+	{
 		Couleur couleurAValider = _toValidate->getCouleur(i);
-		//a completer ici
+		int verdict = _tabVerdicts[i];
+		Couleur couleurRef = _ref->getCouleur(i);
+		if (verdict == 1 && couleurAValider != couleurRef)
+			return false;
+		if (verdict == 3 && couleurAValider == couleurRef)
+			return false;
+		if (verdict == 2)
+		{
+			bool result = false;
+			for (int j = 0; j < 4 && !result; j++)
+				if (j != i && _toValidate->getCouleur(j) == couleurRef)
+					result = true;
+			if (!result)
+				return false;
+		}
 	}
 	return true;
+
+	
 
 	//A COMPLETER
 	//V�rifiez si la combinaison toValidate doit �tre retir�e ou non de la liste, en fonction d'une combinaison de r�f�rence et d'un tableau de 4 verdicts.
@@ -109,6 +121,8 @@ short Mastermind::nettoyerListe(Combinaison* _ref, short* _tabVerdicts)
 
 	Noeud<Combinaison>* noeudAVerifier = NULL;
 
+	short nbOfDeletedCombinaison = 0;
+
 	while ((noeudAVerifier = iter.getCourant()) != NULL) {
 
 		Combinaison* combinaisonAVerifier = noeudAVerifier->getElement();
@@ -120,6 +134,7 @@ short Mastermind::nettoyerListe(Combinaison* _ref, short* _tabVerdicts)
 		}
 
 		++iter;
+		++nbOfDeletedCombinaison;
 	}
 	//apelle valider combinaison
 	//grosse boucle qui fait le tour de la liste avec iterateur - passe a validercombinaison chaque combinaison
@@ -134,5 +149,5 @@ short Mastermind::nettoyerListe(Combinaison* _ref, short* _tabVerdicts)
 	//Pour chacune des combinaisons de la liste, v�rifier si elle doit �tre retir�e ou non de liste.
 	//Le nombre de combinaisons supprim�es doit �tre retourn�.
 
-	return 0;
+	return nbOfDeletedCombinaison;
 }
