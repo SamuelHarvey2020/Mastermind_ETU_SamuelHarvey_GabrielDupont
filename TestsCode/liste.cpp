@@ -67,15 +67,14 @@ namespace Tests_Liste
 		}
 
 		//====================================TESTS DE LA MÉTHODE RETIRER============================================================
-		/*
+		
 		TEST_METHOD(EffectuerUnRetirerSurUneListeVideDevraitRienFaire)
 		{
 			ListeDouble<int> liste;
-			Noeud<int> * ndNb;
+			Iterateur<int> iter = liste.begin();
 			int* nb = new int(1);
-			ndNb->setElement(nb);
 	
-			liste.retirer(ndNb);
+			liste.retirer(iter.getCourant());
 
 			Assert::IsTrue(liste.getPremierNoeud() == NULL);
 		}
@@ -84,17 +83,13 @@ namespace Tests_Liste
 		{
 			ListeDouble<int> liste;
 
-			Noeud<int>* ndNb;
 			int* nb = new int(1);
-			ndNb->setElement(nb);
+			int* nb2 = new int(2);
 			liste.ajouter(nb);
 
-			Noeud<int>* ndNb2;
-			int* nb2 = new int(2);
-			ndNb2->setElement(nb2);
-			liste.ajouter(nb2);
-
-			liste.retirer(ndNb2);
+			Iterateur<int> iter = liste.begin();
+			++iter;
+			liste.retirer(iter.getCourant());
 
 			Assert::IsTrue(liste.getPremierNoeud()->getSuivant() == NULL);
 		}
@@ -103,32 +98,28 @@ namespace Tests_Liste
 		{
 			ListeDouble<int> liste;
 
-			Noeud<int>* ndNb;
 			int* nb = new int(1);
-			ndNb->setElement(nb);
 			liste.ajouter(nb);
 
-			liste.retirer(ndNb);
+			Iterateur<int> iter = liste.begin();
+			liste.retirer(iter.getCourant());
 
 			Assert::IsTrue(liste.getPremierNoeud() == NULL);
 		}
 
-
+		
 		TEST_METHOD(OnDevraitPouvoirRetirerPremierNoeudEnEffectuantUnNouveauChainage)
 		{
 			ListeDouble<int> liste;
 
-			Noeud<int>* ndNb;
 			int* nb = new int(1);
-			ndNb->setElement(nb);
 			liste.ajouter(nb);
 
-			Noeud<int>* ndNb2;
 			int* nb2 = new int(2);
-			ndNb2->setElement(nb2);
 			liste.ajouter(nb2);
 
-			liste.retirer(ndNb);
+			Iterateur<int> iter = liste.begin();
+			liste.retirer(iter.getCourant());
 
 			Assert::IsTrue(liste.getPremierNoeud()->getElement() == nb2);
 		}
@@ -136,23 +127,20 @@ namespace Tests_Liste
 		TEST_METHOD(OnDevraitPouvoirRetirerLeDernierNoeud)
 		{
 			ListeDouble<int> liste;
-
-			Noeud<int>* ndNb;
+		
 			int* nb = new int(1);
-			ndNb->setElement(nb);
 			liste.ajouter(nb);
 
-			Noeud<int>* ndNb2;
 			int* nb2 = new int(2);
-			ndNb2->setElement(nb2);
 			liste.ajouter(nb2);
 
-			Noeud<int>* ndNb3;
 			int* nb3 = new int(3);
-			ndNb3->setElement(nb3);
 			liste.ajouter(nb3);
 
-			liste.retirer(ndNb3);
+			Iterateur<int> iter = liste.begin();
+			++iter;
+			++iter;
+			liste.retirer(iter.getCourant());
 
 			Assert::IsTrue(liste.getPremierNoeud()->getSuivant()->getSuivant() == NULL);
 		}
@@ -161,30 +149,24 @@ namespace Tests_Liste
 		{
 			ListeDouble<int> liste;
 
-			Noeud<int>* ndNb;
 			int* nb = new int(10);
-			ndNb->setElement(nb);
 			liste.ajouter(nb);
 
-			Noeud<int>* ndNb2;
 			int* nb2 = new int(12);
-			ndNb2->setElement(nb2);
 			liste.ajouter(nb2);
 
-			Noeud<int>* ndNb3;
 			int* nb3 = new int(7);
-			ndNb3->setElement(nb3);
 			liste.ajouter(nb3);
 
-			Noeud<int>* ndNb4;
 			int* nb4 = new int(2);
-			ndNb4->setElement(nb4);
 			liste.ajouter(nb4);
 
-			liste.retirer(ndNb3);
+			Iterateur<int> iter = liste.begin();
+			++iter;
+			liste.retirer(iter.getCourant());
 
 			Assert::IsTrue(liste.getPremierNoeud()->getSuivant()->getElement() == nb);
 		}
-		*/
+		
 	};
 }

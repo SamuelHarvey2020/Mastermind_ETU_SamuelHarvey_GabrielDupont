@@ -41,7 +41,9 @@ Iterateur<T>::~Iterateur()
 template<class T>
 void Iterateur<T>::operator++()
 {
-	this->courant = this->courant->getSuivant();
+	if (this->courant != NULL) {
+		this->courant = this->courant->getSuivant();
+	}
 }
 
 template<class T>

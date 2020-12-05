@@ -106,7 +106,7 @@ bool ListeDouble<T>::ajouter(T* element)
 		}
 	}
 	if (canBeAdded == true) {
-		this.nbElements++;
+		this->nbElements++;
 	}
 	return canBeAdded;
 }
@@ -115,21 +115,32 @@ template<class T>
 void ListeDouble<T>::retirer(Noeud <T>* noeudCourant)
 {
 
-	//doit supprimer dernier noeud
-
 	if (this->premierNoeud != NULL) {
 
-		Noeud<T>* noeudTemporaire = noeudCourant;
+		if (noeudCourant != NULL) {
 
-		if (noeudTemporaire != premierNoeud) {
-			noeudTemporaire->getPrecedent()->setSuivant(noeudTemporaire->getSuivant());
-			noeudTemporaire->getSuivant()->setPrecedent(noeudTemporaire->getPrecedent());
+			Noeud<T>* noeudTemporaire = noeudCourant;
+
+			if (noeudTemporaire == premierNoeud) {
+
+				if(noeudTemporaire->getSuivant() != NULL){
+					this->premierNoeud = noeudTemporaire->getSuivant();
+					noeudTemporaire->getSuivant()->setPrecedent(NULL);
+				}
+				else {
+					this->premierNoeud = NULL;
+				}
+			}
+			else if (noeudTemporaire->getSuivant() == NULL) {
+				noeudTemporaire->getPrecedent()->setSuivant(NULL);
+			}
+			else {
+				noeudTemporaire->getPrecedent()->setSuivant(noeudTemporaire->getSuivant());
+				noeudTemporaire->getSuivant()->setPrecedent(noeudTemporaire->getPrecedent());
+			}
+			delete noeudTemporaire;
+
 		}
-		else {
-			this->premierNoeud = noeudTemporaire->getSuivant();
-			noeudTemporaire->getSuivant()->setPrecedent(NULL);
-		}
-		delete noeudTemporaire;
 	}
 }
 
