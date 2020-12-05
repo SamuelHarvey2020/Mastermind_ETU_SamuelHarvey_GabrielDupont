@@ -61,15 +61,27 @@ Combinaison* Mastermind::getElement(int index) const
 
 bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref, short* _tabVerdicts)
 {
-	
-	for (int i = 0; i < 4; i++) {
-
-
-		Couleur couleur = _ref->getCouleur(i);
+	for (int i = 0; i < 4; i++) 
+	{
 		int verdict = _tabVerdicts[i];
+		Couleur couleurRef = _ref->getCouleur(i);
 		Couleur couleurAValider = _toValidate->getCouleur(i);
-		//a completer ici
+		if (verdict == 1 && couleurAValider != couleurRef)
+			return false;
+		if (verdict == 3 && couleurAValider == couleurRef)
+			return false;
+		if (verdict == 2) 
+		{
+			bool result = false;
+			for (int j = 0; j < 4 && !result; j++)
+				if (j != i && _toValidate->getCouleur(j) == couleurRef)
+					result = true;
+			if (!result)
+				return false;
+		}
 	}
+	return true;
+
 	//A COMPLETER
 	//V�rifiez si la combinaison toValidate doit �tre retir�e ou non de la liste, en fonction d'une combinaison de r�f�rence et d'un tableau de 4 verdicts.
 	//Pour chacune des couleurs pr�sentes dans toValidate, 3 verdicts possibles doivent �tre pris en consid�ration pour �l�miner ou non la combinaison,
@@ -98,16 +110,17 @@ bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref,
 	//1-3-3-3 -> mauve bleu orange orange > entr� -> mauve blanc noir noir > ref -> garde tout les combinaisons dont le 1 est a la bonne place
 	//2 -> bonne couleur mais pas a la bonne place-> garde toutes les combinaisons dont la couleur de verdict 2 est pr�sente, flush tout celles ou la couleur de verdict 2 est a la meme place et ceux qui ont pas la couleur
 
-	return 0;
+	
 }
 
 short Mastermind::nettoyerListe(Combinaison* _ref, short* _tabVerdicts)
 {
 	Iterateur<Combinaison> iter = this->liste->begin();
 
-	for (int i = 0; i < this->liste->getNbElements(); i++) {
+	Noeud<Combinaison>* noeudAVerifier = NULL;
 
-		Noeud<Combinaison>* noeudAVerifier = iter.getCourant();
+	while ((noeudAVerifier = iter.getCourant()) != NULL) {
+
 		Combinaison* combinaisonAVerifier = noeudAVerifier->getElement();
 
 		bool isCorrect = validerCombinaison(combinaisonAVerifier, _ref, _tabVerdicts);
