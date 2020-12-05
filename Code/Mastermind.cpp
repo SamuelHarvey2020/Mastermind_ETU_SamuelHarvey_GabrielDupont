@@ -61,11 +61,12 @@ Combinaison* Mastermind::getElement(int index) const
 
 bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref, short* _tabVerdicts)
 {
+
 	for (int i = 0; i < 4; i++) 
 	{
+		Couleur couleurAValider = _toValidate->getCouleur(i);
 		int verdict = _tabVerdicts[i];
 		Couleur couleurRef = _ref->getCouleur(i);
-		Couleur couleurAValider = _toValidate->getCouleur(i);
 		if (verdict == 1 && couleurAValider != couleurRef)
 			return false;
 		if (verdict == 3 && couleurAValider == couleurRef)
