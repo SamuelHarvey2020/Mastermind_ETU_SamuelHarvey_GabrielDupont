@@ -46,14 +46,13 @@ template <class T>
 ListeDouble<T>::~ListeDouble()
 {
 	this->vider();
-	delete this;
 }
 
 template <class T>
 void ListeDouble<T>::vider()
 {
 	while (this->premierNoeud != NULL) {
-		retirer();
+		this->retirer();
 	}
 }
 
