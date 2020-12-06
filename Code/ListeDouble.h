@@ -50,7 +50,9 @@ ListeDouble<T>::~ListeDouble()
 template <class T>
 void ListeDouble<T>::vider()
 {
-	//apelle retirer jusqu att 1er null
+	while (this->premierNoeud != NULL) {
+		retirer();
+	}
 }
 
 template<class T>
@@ -139,6 +141,7 @@ void ListeDouble<T>::retirer(Noeud <T>* noeudCourant)
 				noeudTemporaire->getSuivant()->setPrecedent(noeudTemporaire->getPrecedent());
 			}
 			delete noeudTemporaire;
+			this->nbElements--;
 
 		}
 	}
@@ -182,6 +185,5 @@ Iterateur<T> ListeDouble<T>::end()
 template<class T>
 void ListeDouble<T>::retirer()
 {
-	//retire le premier noeud
 	this->retirer(this->premierNoeud);
 }

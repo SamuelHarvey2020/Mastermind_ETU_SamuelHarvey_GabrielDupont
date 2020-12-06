@@ -167,6 +167,79 @@ namespace Tests_Liste
 
 			Assert::IsTrue(liste.getPremierNoeud()->getSuivant()->getElement() == nb);
 		}
+
+		//======================================= TESTS AUTRES METHODES =========================================================================
 		
+		TEST_METHOD(viderDevraitViderLaListe)
+		{
+			ListeDouble<int> liste;
+
+			int* nb = new int(10);
+			liste.ajouter(nb);
+
+			int* nb2 = new int(12);
+			liste.ajouter(nb2);
+
+			int* nb3 = new int(7);
+			liste.ajouter(nb3);
+
+			int* nb4 = new int(2);
+			liste.ajouter(nb4);
+
+			liste.vider();
+
+			Assert::IsTrue(liste.getPremierNoeud()== NULL);
+		}
+
+		TEST_METHOD(getNbElementsDevraitRetournerNbElements)
+		{
+			ListeDouble<int> liste;
+
+			int* nb = new int(10);
+			liste.ajouter(nb);
+
+			int* nb2 = new int(12);
+			liste.ajouter(nb2);
+
+			int* nb3 = new int(7);
+			liste.ajouter(nb3);
+
+			int* nb4 = new int(2);
+			liste.ajouter(nb4);
+
+			const int nbElementsListe = 4;
+
+			int nbElements = liste.getNbElements();
+
+			Assert::IsTrue(nbElements == nbElementsListe);
+		}
+
+		TEST_METHOD(getNbElementsDevraitRetournerNbElementsMemeApresRetirer)
+		{
+			ListeDouble<int> liste;
+
+			int* nb = new int(10);
+			liste.ajouter(nb);
+
+			int* nb2 = new int(12);
+			liste.ajouter(nb2);
+
+			int* nb3 = new int(7);
+			liste.ajouter(nb3);
+
+			int* nb4 = new int(2);
+			liste.ajouter(nb4);
+
+			Iterateur<int> iter = liste.begin();
+			++iter;
+			liste.retirer(iter.getCourant());
+
+			const int nbElementsListe = 3;
+
+			int nbElements = liste.getNbElements();
+
+			Assert::IsTrue(nbElements == nbElementsListe);
+		}
+
 	};
 }
