@@ -29,7 +29,7 @@ namespace Tests_Mastermind
 
 		//====================================TESTS DE LA M…THODE NETTOYER LISTE============================================================
 
-		TEST_METHOD(LorsquUneCombinaisonEstValideSur4VerdictLaFonctionDevraitRetournerLensembleDesCombiniason…exceptÈUne) 
+		TEST_METHOD(LorsquUneCombinaisonEstValideSur4VerdictLaFonctionDevraitRetournerLensembleDesCombiniasonExceptÈUne) 
 		{
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
