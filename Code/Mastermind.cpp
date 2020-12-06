@@ -136,12 +136,13 @@ short Mastermind::nettoyerListe(Combinaison* _ref, short* _tabVerdicts)
 
 		bool isCorrect = validerCombinaison(combinaisonAVerifier, _ref, _tabVerdicts);
 
+		++iter;
+
 		if (isCorrect == false) {
 			this->liste->retirer(noeudAVerifier);
 			nbOfDeletedCombinaison = nbOfDeletedCombinaison + 1;
 		}
 
-		++iter;
 	}
 	//apelle valider combinaison
 	//grosse boucle qui fait le tour de la liste avec iterateur - passe a validercombinaison chaque combinaison
