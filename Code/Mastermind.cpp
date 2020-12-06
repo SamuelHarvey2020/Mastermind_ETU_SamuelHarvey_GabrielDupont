@@ -56,7 +56,15 @@ int Mastermind::getNbElements() const
 /// <returns>L'�l�ment qui est � la position index</returns>
 Combinaison* Mastermind::getElement(int index) const
 {
-	return nullptr;
+	Iterateur<Combinaison> iter = this->liste->begin();
+	int i = 1;
+	while (i != index) {
+		i++;
+		++iter;
+	}
+
+	Combinaison* comb = iter.operator->();
+	return comb;
 }
 
 bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref, short* _tabVerdicts)
