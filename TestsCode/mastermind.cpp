@@ -93,6 +93,7 @@ namespace Tests_Mastermind
 			tabVerdict[3] = 2;
 
 
+
 			//la fonction devrait retourner 4095 car il n'y a qu'une seule combinaison valide
 			Assert::IsTrue(mastermind.nettoyerListe(ref, tabVerdict) == 4095);
 		}
