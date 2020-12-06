@@ -25,8 +25,6 @@ namespace Tests_Mastermind
 		{
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
-			int nombreAleatoire = rand() % mastermind.getNbElements();
-			Combinaison* tabCouleursRef = mastermind.getElement(nombreAleatoire);
 
 			//les couleur de la combinaison que HAl porpose
 			short c1 = 3;
@@ -50,6 +48,10 @@ namespace Tests_Mastermind
 			tabVerdict[1] = 1;
 			tabVerdict[2] = 1;
 			tabVerdict[3] = 1;
+
+			Assert::IsTrue(mastermind.nettoyerListe(ref, tabVerdict) == 4095);
+			
+
 
 		
 
