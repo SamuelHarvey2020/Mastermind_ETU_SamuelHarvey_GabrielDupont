@@ -46,7 +46,7 @@ Mastermind::~Mastermind()
 
 int Mastermind::getNbElements() const
 {
-	return 0;
+	return 4;
 }
 
 /// <summary>
@@ -83,7 +83,6 @@ bool Mastermind::validerCombinaison(Combinaison* _toValidate, Combinaison* _ref,
 	return true;
 
 	
-
 	//A COMPLETER
 	//V�rifiez si la combinaison toValidate doit �tre retir�e ou non de la liste, en fonction d'une combinaison de r�f�rence et d'un tableau de 4 verdicts.
 	//Pour chacune des couleurs pr�sentes dans toValidate, 3 verdicts possibles doivent �tre pris en consid�ration pour �l�miner ou non la combinaison,
@@ -131,10 +130,10 @@ short Mastermind::nettoyerListe(Combinaison* _ref, short* _tabVerdicts)
 
 		if (isCorrect == false) {
 			this->liste->retirer(noeudAVerifier);
+			nbOfDeletedCombinaison = nbOfDeletedCombinaison + 1;
 		}
 
 		++iter;
-		++nbOfDeletedCombinaison;
 	}
 	//apelle valider combinaison
 	//grosse boucle qui fait le tour de la liste avec iterateur - passe a validercombinaison chaque combinaison
