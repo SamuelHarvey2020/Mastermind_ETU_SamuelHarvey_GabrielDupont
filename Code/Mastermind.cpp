@@ -46,7 +46,7 @@ Mastermind::~Mastermind()
 
 int Mastermind::getNbElements() const
 {
-	return this->getNbElements();
+	return this->liste->getNbElements();
 }
 
 /// <summary>
