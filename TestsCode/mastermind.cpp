@@ -51,16 +51,7 @@ namespace Tests_Mastermind
 
 			Assert::IsTrue(mastermind.nettoyerListe(ref, tabVerdict) == 4095);
 			
-
-
-		
-
-
-		
 		}
-
-
-
 
 	};
 }

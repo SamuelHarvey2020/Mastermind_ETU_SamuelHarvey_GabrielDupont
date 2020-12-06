@@ -31,6 +31,6 @@ bool Combinaison::operator > (const Combinaison& _combinaison) const
 bool Combinaison::operator == (const Combinaison& _combinaison) const
 {
 	// À COMPLÉTER
-	return true;
+	return (*this == _combinaison);
 }
 
