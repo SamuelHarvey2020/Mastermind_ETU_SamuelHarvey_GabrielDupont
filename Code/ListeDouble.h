@@ -45,6 +45,8 @@ ListeDouble<T>::ListeDouble()
 template <class T>
 ListeDouble<T>::~ListeDouble()
 {
+	this->vider();
+	delete this;
 }
 
 template <class T>
