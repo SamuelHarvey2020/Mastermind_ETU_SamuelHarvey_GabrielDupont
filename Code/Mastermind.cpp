@@ -40,7 +40,7 @@ Mastermind::Mastermind(ListeDouble<Combinaison>* _liste)
 
 Mastermind::~Mastermind()
 {
-
+	this->liste->~ListeDouble();
 }
 
 

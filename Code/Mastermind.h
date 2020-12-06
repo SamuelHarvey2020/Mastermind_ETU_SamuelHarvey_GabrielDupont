@@ -17,10 +17,9 @@ public:
 
     short nettoyerListe(Combinaison* _ref, short* _tabVerdicts);
 
-    bool validerCombinaison(Combinaison* _toValidate, Combinaison* _ref, short* _tabVerdicts);
-
 private:
 
+	bool validerCombinaison(Combinaison* _toValidate, Combinaison* _ref, short* _tabVerdicts);
 
     ListeDouble<Combinaison>* liste; //Contient toutes les combinaisons de couleurs possibles, selon le contexte.
 
