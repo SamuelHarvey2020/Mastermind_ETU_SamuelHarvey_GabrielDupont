@@ -55,7 +55,7 @@ int Mastermind::getNbElements() const
 Combinaison* Mastermind::getElement(int index) const
 {
 	Iterateur<Combinaison> iter = this->liste->begin();
-	int i = 1;
+	int i = 0;
 	while (i != index) {
 		i++;
 		++iter;

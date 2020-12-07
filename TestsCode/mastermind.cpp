@@ -9,9 +9,9 @@ namespace Tests_Mastermind
 
 	TEST_CLASS(mastermind)
 	{
-		public:
+	public:
 		//TEST DU CONSTRUCTEUR DE MASTERMIND
-		TEST_METHOD(LorsDeLINstanciationDeLaClasseMastermind4096CombinaisonsDevraientÊtreCréé) 
+		TEST_METHOD(LorsDeLINstanciationDeLaClasseMastermind4096CombinaisonsDevraientÊtreCréé)
 		{
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
@@ -29,7 +29,7 @@ namespace Tests_Mastermind
 
 		//====================================TESTS DE LA MÉTHODE NETTOYER LISTE============================================================
 
-		TEST_METHOD(LorsquUneCombinaisonEstValideSur4VerdictLaFonctionDevraitRetournerLensembleDesCombiniasonExceptéUne) 
+		TEST_METHOD(LorsquUneCombinaisonEstValideSur4VerdictLaFonctionDevraitRetournerLensembleDesCombiniasonExceptéUne)
 		{
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
@@ -60,15 +60,15 @@ namespace Tests_Mastermind
 
 			//la fonction devrait retourner 4095 car il n'y a qu'une seule combinaison valide
 			Assert::IsTrue(mastermind.nettoyerListe(ref, tabVerdict) == 4095);
-			
+
 		}
 
-		TEST_METHOD(LorsqueLaRéponseDuJoueurEst1122LaFonctionDevraitRetournerLesToutesLesCombinaisonsExceptéUne) 
+		TEST_METHOD(LorsqueLaRéponseDuJoueurEst1122LaFonctionDevraitRetournerLesToutesLesCombinaisonsExceptéUne)
 		{
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
 
-			//les couleur de la combinaison que HAl porpose
+			//les couleurs de la combinaison que HAl porpose
 			short c1 = 3;
 			Couleur* couleur1 = new Couleur(c1);
 
@@ -103,7 +103,7 @@ namespace Tests_Mastermind
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
 
-			//les couleur de la combinaison que HAl porpose
+			//les couleurs de la combinaison que HAl porpose
 			short c1 = 3;
 			Couleur* couleur1 = new Couleur(c1);
 
@@ -137,7 +137,7 @@ namespace Tests_Mastermind
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
 
-			//les couleur de la combinaison que HAl porpose
+			//les couleurs de la combinaison que HAl porpose
 			short c1 = 3;
 			Couleur* couleur1 = new Couleur(c1);
 
@@ -172,7 +172,7 @@ namespace Tests_Mastermind
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
 
-			//les couleur de la combinaison que HAl porpose
+			//les couleurs de la combinaison que HAl porpose
 			short c1 = 3;
 			Couleur* couleur1 = new Couleur(c1);
 
@@ -187,7 +187,7 @@ namespace Tests_Mastermind
 
 			Combinaison* ref = new Combinaison(*couleur1, *couleur2, *couleur3, *couleur4);
 
-			//combiniason du joueur(1267)
+			//combinaison du joueur(1267) ###
 			//les réponses du joueur
 			short tabVerdict[4];
 
@@ -207,7 +207,7 @@ namespace Tests_Mastermind
 			ListeDouble<Combinaison>* liste = new ListeDouble<Combinaison>;
 			Mastermind mastermind(liste);
 
-			//les couleur de la combinaison que HAl porpose
+			//les couleurs de la combinaison que HAl porpose
 			short c1 = 3;
 			Couleur* couleur1 = new Couleur(c1);
 
@@ -222,7 +222,7 @@ namespace Tests_Mastermind
 
 			Combinaison* ref = new Combinaison(*couleur1, *couleur2, *couleur3, *couleur4);
 
-			//combiniason du joueur(3652)
+			//combinaison du joueur(3652)
 			//les réponses du joueur
 			short tabVerdict[4];
 
@@ -260,7 +260,7 @@ namespace Tests_Mastermind
 
 			Combinaison* ref = new Combinaison(*couleur1, *couleur2, *couleur3, *couleur4);
 
-			//combiniason du joueur(3835)
+			//combinaison du joueur(3835)
 			//les réponses du joueur
 			short tabVerdict[4];
 
@@ -271,7 +271,7 @@ namespace Tests_Mastermind
 
 			//premier nettoyage
 			mastermind.nettoyerListe(ref, tabVerdict);
-			
+
 
 			//les couleurs de la deuxième combinaison que HAl porpose
 			short r1 = 3;
@@ -297,11 +297,11 @@ namespace Tests_Mastermind
 			tabVerdict2[3] = 1;
 
 
-			//la fonction devrait retourner 21 car la première fois que Hal a fait un nettoyage il en a retiré 4074
+			//la fonction devrait retourner 21 car la première fois que HAl a fait un nettoyage, il en a retiré 4074
 			//sur les 22 restantes une seule est valide
-			//la méthode devrait retourner (22-1(celle valide))
+			//en résumé la méthode devrait retourner (22-1(celle valide))
 			Assert::IsTrue(mastermind.nettoyerListe(ref2, tabVerdict2) == 21);
-			
+
 
 		}
 
@@ -325,7 +325,7 @@ namespace Tests_Mastermind
 
 			Combinaison* ref = new Combinaison(*couleur1, *couleur2, *couleur3, *couleur4);
 
-			//combiniason du joueur(3835)
+			//combinaison du joueur(3835)
 			//les réponses du joueur
 			short tabVerdict[4];
 

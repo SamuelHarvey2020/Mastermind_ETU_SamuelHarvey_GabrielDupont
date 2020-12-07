@@ -77,6 +77,7 @@ void ConsoleMenu::run()
                 if (partieEstTerminee(tabVerdicts))
                 {
                     afficherResultat(nbCoups);
+					partieContinue = false;
 					break;
                 }
                 else

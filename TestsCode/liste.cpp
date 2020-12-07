@@ -168,7 +168,7 @@ namespace Tests_Liste
 			Assert::IsTrue(liste.getPremierNoeud()->getSuivant()->getElement() == nb);
 		}
 
-		//======================================= TESTS AUTRES METHODES =========================================================================
+		//======================================= TESTS DES AUTRES METHODES =========================================================================
 		
 		TEST_METHOD(viderDevraitViderLaListe)
 		{
