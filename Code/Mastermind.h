@@ -23,4 +23,15 @@ private:
 
     ListeDouble<Combinaison>* liste; //Contient toutes les combinaisons de couleurs possibles, selon le contexte.
 
+	void deleteCouleurs(Couleur* c1, Couleur* c2, Couleur* c3, Couleur* c4);
+
+	void deleteCombinaisons(Combinaison* tabCombinaison[]);
+
+
+	Combinaison* tabCombinaison[4096];
+
+
+	int nbOfCreatedCombinaisons = 0;
+
+
 };
